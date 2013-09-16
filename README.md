@@ -1,4 +1,4 @@
 GearFactor
 ==========
 
-Find primes by using the Lehmer (bicycle chain) sieve.
+Ruby script that finds primes by using the Lehmer (bicycle chain) sieve.
