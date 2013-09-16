@@ -2,14 +2,15 @@
 class Gear
   attr_accessor :prime, :count
 
+  # note only gear size of > 1 makes sense
+
   def initialize(prime)
     @prime = prime
     @count = prime
   end
 
   def aligned?
-    # gear of size one is broken; it will never align
-    @prime == 1 ? false : @count == @prime
+    @count == @prime
   end
 
   def turn
@@ -28,9 +29,9 @@ class GearFactor
 
   def initialize
     @verbose = false
-    @count = 1
+    @count = 2
     @gear_array = []
-    @gear_array << Gear.new(1)
+    @gear_array << Gear.new(2)
   end
 
   def turn(so_many = 1)
@@ -59,11 +60,13 @@ class GearFactor
   end
 end
 
-abort "Please give an integer number argument great than 1." unless  ARGV[0]
+
+abort "Please give an integer number argument great than 1." unless Integer(ARGV[0]) > 1
 
 g = GearFactor.new
 
-g.turn Integer(ARGV[0])-1
+g.turn Integer(ARGV[0])-2
 
 puts g.sizes
 puts "Found #{g.sizes.size} primes."
+
